@@ -24,7 +24,6 @@ var less = require('less-stream');
 As a simple streaming compiler:
 ```javascript
 var less = require('less-stream'),
-  stream = require('stream'),
   fs = require('fs');
 
 fs.createReadStream('path/to/less/src')
@@ -35,7 +34,7 @@ fs.createReadStream('path/to/less/src')
 With streaming build tools like [gulp](https://github.com/gulpjs/gulp/):
 ```javascript
 var gulp = require('gulp'),
-  less = require('less-stream'),  // gulp-less doesn't support global/modify vars
+  less = require('less-stream'),  // gulp-less uses less.render() & can't support global/modify vars
   sourcemaps = require('gulp-sourcemaps');
 
 // Basic compile
