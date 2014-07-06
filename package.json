@@ -1,0 +1,25 @@
+{
+  "name": "less-stream",
+  "description": "Simple stream interface for node-less, supporting sourcemaps and global/modify vars",
+  "version": "0.1.0",
+  "keywords": ["less", "stream", "sourcemaps", "lessc", "lessjs", "gulp"],
+  "homepage": "https://github.com/davidrekow/less-stream",
+  "author": {
+    "name": "David Rekow",
+    "email": "d@davidrekow.com",
+    "url": "http://github.com/davidrekow"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/davidrekow/less-stream.git"
+  },
+  "bugs": "https://github.com/davidrekow/less-stream/issues",
+  "license": "MIT",
+  "dependencies": {
+    "less": "~1.7.3",
+    "through2": "~0.5.1",
+    "convert-source-map": "~0.3.4",
+    "vinyl-sourcemaps-apply": "~0.1.1"
+  },
+  "main": "index"
+}
