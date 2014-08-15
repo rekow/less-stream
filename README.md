@@ -6,7 +6,7 @@ Add to your `devDependencies`:
 ```javascript
   "dependencies": {...},
   "devDependencies": {
-    "less-stream": "~0.1.0"
+    "less-stream": "~0.1.2"
   },
   ...
 ```

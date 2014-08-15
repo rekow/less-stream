@@ -4,6 +4,8 @@ var less = require('less'),
   convert = require('convert-source-map'),
   applySourceMap = require('vinyl-sourcemaps-apply'),
 
+  sourceMapMatcher = /\/\*\#\s?sourceMappingURL=data:application\/json;base64\,([^\*]+)\*\//,
+
   merge = function (obj1, obj2) {
     for (var k in obj2) {
       if (obj2.hasOwnProperty(k)) {
@@ -24,6 +26,20 @@ var less = require('less'),
       }
     }
     return str;
+  },
+
+  parseSourceMap = function (css) {
+    var srcMap = null;
+    css = css.replace(sourceMapMatcher, function (_, b64) {
+      srcMap = JSON.parse(new Buffer(b64, 'base64').toString('ascii'));
+    });
+    return srcMap;
+  },
+
+  stripSourceMap = function (css) {
+    return css.replace(sourceMapMatcher, function () {
+      return ''
+    });
   };
 
 module.exports = function (options) {
@@ -68,7 +84,8 @@ module.exports = function (options) {
           self.emit('error', e);
         }
 
-        file.contents = new Buffer(css);
+        file.sourceMap = parseSourceMap(css) || file.sourceMap;
+        file.contents = new Buffer(stripSourceMap(css));
         file.path = file.path.slice(0, -4) + 'css';
 
         if (!!file.sourceMap) {
