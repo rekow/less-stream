@@ -84,7 +84,7 @@ module.exports = function (options) {
           self.emit('error', e);
         }
 
-        file.sourceMap = parseSourceMap(css) || file.sourceMap;
+        file.sourceMap = opts.compress ? parseSourceMap(css) || file.sourceMap : file.sourceMap;
         file.contents = new Buffer(stripSourceMap(css));
         file.path = file.path.slice(0, -4) + 'css';
 
