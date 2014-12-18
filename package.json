@@ -1,7 +1,7 @@
 {
   "name": "less-stream",
   "description": "Simple stream interface for node-less, supporting sourcemaps and global/modify vars",
-  "version": "0.1.3",
+  "version": "0.1.4",
   "keywords": ["less", "stream", "sourcemaps", "lessc", "lessjs", "gulp"],
   "homepage": "https://github.com/davidrekow/less-stream",
   "author": {
