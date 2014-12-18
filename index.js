@@ -86,7 +86,7 @@ module.exports = function (options) {
 
         file.sourceMap = opts.compress ? parseSourceMap(css) || file.sourceMap : file.sourceMap;
         file.contents = new Buffer(stripSourceMap(css));
-        file.path = file.path.slice(0, -4) + 'css';
+        file.path = file.path.slice(0, -4) + '.css';
 
         if (!!file.sourceMap) {
           srcMap = convert.fromSource(css);
@@ -96,6 +96,7 @@ module.exports = function (options) {
             for (var i = 0; i < srcMap.sources.length; i++) {
               srcMap.sources[i] = path.resolve(file.base, srcMap.sources[i]);
             }
+            srcMap.file = file.path;
             applySourceMap(file, srcMap);
           }
         }
