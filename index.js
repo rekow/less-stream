@@ -82,6 +82,7 @@ module.exports = function (options) {
           css = tree.toCSS(opts);
         } catch (e) {
           self.emit('error', e);
+          return;
         }
 
         file.sourceMap = opts.compress ? parseSourceMap(css) || file.sourceMap : file.sourceMap;
